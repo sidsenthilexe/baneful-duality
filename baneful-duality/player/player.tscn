@@ -1,8 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://nqay38cb1sw1"]
+[gd_scene load_steps=4 format=3 uid="uid://nqay38cb1sw1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_x6kmk"]
+[ext_resource type="Texture2D" uid="uid://bqalhxiqlpu4j" path="res://player_sprite.png" id="2_34t2a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jom1u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_34t2a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_x6kmk")
