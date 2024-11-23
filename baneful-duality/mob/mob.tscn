@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dhkiu21mmpw60"]
+
+[node name="mob" type="CharacterBody2D"]
+
+[node name="mob" type="AnimatedSprite2D" parent="."]
+
+[node name="mob2" type="CollisionShape2D" parent="."]
