@@ -19,3 +19,26 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1280
 window/size/viewport_height=800
 window/stretch/mode="canvas_items"
+
+[input]
+
+move_up={
+"deadzone": 0.0,
+"events": []
+}
+move_down={
+"deadzone": 0.0,
+"events": []
+}
+move_left={
+"deadzone": 0.0,
+"events": []
+}
+move_right={
+"deadzone": 0.0,
+"events": []
+}
+attack={
+"deadzone": 0.0,
+"events": []
+}
