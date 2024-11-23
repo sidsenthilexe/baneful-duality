@@ -15,3 +15,34 @@ data_*/
 mono_crash.*.json
 .vscode
 *.tmp
+
+# Windows
+
+# Thumbnail Caches
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Folder Config
+Desktop.ini
+desktop.ini
+
+# Mac 
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Files that might appear
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Thumbnails
+._*
