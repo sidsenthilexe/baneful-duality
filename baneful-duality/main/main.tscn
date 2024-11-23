@@ -1,5 +1,9 @@
-[gd_scene format=3 uid="uid://cnv47n2girq3r"]
+[gd_scene load_steps=2 format=3 uid="uid://cnv47n2girq3r"]
+
+[ext_resource type="PackedScene" uid="uid://nqay38cb1sw1" path="res://player/player.tscn" id="1_jc4mq"]
 
 [node name="main" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_jc4mq")]
