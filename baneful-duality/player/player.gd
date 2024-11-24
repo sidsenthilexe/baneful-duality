@@ -16,7 +16,6 @@ func _physics_process(delta: float) -> void:
 		if not last_moves_array.has(i):
 			last_moves_array.append(i)
 	last_moves_array.reverse()
-	print(last_moves_array)
 	possession_chances = possession_generator.randi_range(1, 10000)
 	if is_on_floor():
 		double_jump_count = 0
