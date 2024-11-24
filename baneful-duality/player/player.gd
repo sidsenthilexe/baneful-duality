@@ -58,16 +58,16 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 1.5 * direction * SPEED
 
 		
-	if possession_chances > 9900 and possession_chances < 9975:
-		for e in last_moves_array:
-			if e == "1":
-				player_animations.play("running")
-				velocity.x = 7 * SPEED
-			elif e == "-1":
-				player_animations.play("runningleft")
-				velocity.x = -7 * SPEED
-			elif e == "2":
-				velocity.y = 1.12 * JUMP_VELOCITY
+	#if possession_chances > 9900 and possession_chances < 9975:
+		#for e in last_moves_array:
+			#if e == "1":
+				#player_animations.play("running")
+				#velocity.x = 7 * SPEED
+			#elif e == "-1":
+				#player_animations.play("runningleft")
+				#velocity.x = -7 * SPEED
+			#elif e == "2":
+				#velocity.y = 1.12 * JUMP_VELOCITY
 		move_array.clear()
 		last_moves_array.clear()
 		
