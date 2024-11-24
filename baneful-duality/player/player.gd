@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var player_animations: AnimatedSprite2D = $AnimatedSprite2D
 var posession_boolean = false
+
+var slide_check=0
 var player_health = 0
 var move_array = []
 var last_moves_array = []
@@ -10,6 +12,9 @@ const JUMP_VELOCITY = -400.0
 var double_jump_count = 0
 var possession_generator = RandomNumberGenerator.new()
 var possession_chances = 0;
+func wait(seconds: float) -> void:
+	await get_tree().create_timer(seconds).timeout
+
 func _physics_process(delta: float) -> void:
 	if player_health == 5:
 		$Camera2D/Control/health_bar.texture = ResourceLoader.load("res://art/health_full.png")
@@ -49,8 +54,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY*0.95
 				
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -63,15 +66,20 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-	if Input.is_action_pressed("move_down"):
-		print("test")
-		print(direction)
-		if direction == 1:
-			player_animations.play("sliding")
-		elif direction == -1:
-			player_animations.play("slidingleft")
-		velocity.x = 1.5 * direction * SPEED
-
+	# if Input.is_action_pressed("move_down"):
+	# 	print(slide_check)
+	# 	if slide_check == 0:
+	# 		if direction == 1:
+	# 			player_animations.play("sliding")
+	# 		elif direction == -1:
+	# 			player_animations.play("slidingleft")
+	# 		velocity.x = 1.5 * direction * SPEED
+	# 		# wait(10000)
+	# 		# slide_check=1
+	# 	if slide_check == 1:	
+	# 		pass
+			
+			
 		
 	if position.x>=15460 and position.x<=15600:
 		position.x=15700
