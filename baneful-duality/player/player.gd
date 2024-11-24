@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 @onready var player_animations: AnimatedSprite2D = $AnimatedSprite2D
-
+var posession_boolean = false
 var player_health = 0
 var move_array = []
 var last_moves_array = []
-const SPEED = 150.0
+const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var double_jump_count = 0
 var possession_generator = RandomNumberGenerator.new()
@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 		double_jump_count += 1
 		velocity.y = JUMP_VELOCITY*0.95
 				
-			
+
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
@@ -73,6 +73,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 1.5 * direction * SPEED
 
 		
+	if position.x>=15460 and position.x<=15600:
+		position.x=15700
+		position.y=100
+		posession_boolean=true	
+	print(position.x)
+	print(position.y)
+
 	#if possession_chances > 9900 and possession_chances < 9975:
 		#for e in last_moves_array:
 			#if e == "1":
@@ -83,8 +90,8 @@ func _physics_process(delta: float) -> void:
 				#velocity.x = -7 * SPEED
 			#elif e == "2":
 				#velocity.y = 1.12 * JUMP_VELOCITY
-		move_array.clear()
-		last_moves_array.clear()
+		# move_array.clear()
+		# last_moves_array.clear()
 		
 	if not is_on_floor() and Input.is_action_pressed("move_up"):
 		player_animations.play("jumping")

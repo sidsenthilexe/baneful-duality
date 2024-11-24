@@ -157,6 +157,7 @@ zoom = Vector2(4, 4)
 
 [node name="Control" type="Control" parent="Camera2D"]
 layout_mode = 3
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -2100.0
