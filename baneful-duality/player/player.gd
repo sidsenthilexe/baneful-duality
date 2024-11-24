@@ -5,6 +5,7 @@ var posession_boolean = false
 
 var slide_check=0
 var player_health = 0
+var possession_start=false
 var move_array = []
 var last_moves_array = []
 const SPEED = 300.0
@@ -12,8 +13,7 @@ const JUMP_VELOCITY = -400.0
 var double_jump_count = 0
 var possession_generator = RandomNumberGenerator.new()
 var possession_chances = 0;
-func wait(seconds: float) -> void:
-	await get_tree().create_timer(seconds).timeout
+
 
 func _physics_process(delta: float) -> void:
 	if player_health == 5:
@@ -44,24 +44,31 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_pressed("move_up") and is_on_floor():
-		player_animations.play("jumping")
-	if Input.is_action_just_pressed("move_up") and is_on_floor():
-		velocity.y = JUMP_VELOCITY*0.95
-		move_array.append("2")
-	if Input.is_action_just_pressed("move_up") and not is_on_floor() and double_jump_count == 0:
-		double_jump_count += 1
-		velocity.y = JUMP_VELOCITY*0.95
+	if posession_boolean==false:
+		if Input.is_action_pressed("move_up") and is_on_floor():
+			player_animations.play("jumping")
+		if Input.is_action_just_pressed("move_up") and is_on_floor():
+			velocity.y = JUMP_VELOCITY*0.95
+			move_array.append("2")
+		if Input.is_action_just_pressed("move_up") and not is_on_floor() and double_jump_count == 0:
+			double_jump_count += 1
+			velocity.y = JUMP_VELOCITY*0.95
 				
 
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
 	if (direction == 1):
-		player_animations.play("running")
+		if posession_boolean==false:
+			player_animations.play("running")
+		if posession_boolean==true:
+			player_animations.play("posessionrunright")
 		move_array.append("1")
 	elif (direction == -1):
-		player_animations.play("runningleft")
+		if posession_boolean==false:
+			player_animations.play("runningleft")
+		if posession_boolean==true:
+			player_animations.play("posessionrunleft")
 		move_array.append("-1")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -84,7 +91,9 @@ func _physics_process(delta: float) -> void:
 	if position.x>=15460 and position.x<=15600:
 		position.x=15700
 		position.y=100
-		posession_boolean=true	
+		posession_boolean=true
+		player_animations.play("posession")
+
 	print(position.x)
 	print(position.y)
 
@@ -104,6 +113,9 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor() and Input.is_action_pressed("move_up"):
 		player_animations.play("jumping")
 	if is_on_floor() and velocity.x == 0:
-		player_animations.play("idle")
+		if posession_boolean==false:
+			player_animations.play("idle")
+		if posession_boolean==true:
+			player_animations.play("idle")
 	
 	move_and_slide()
