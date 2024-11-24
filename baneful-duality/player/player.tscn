@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://nqay38cb1sw1"]
+[gd_scene load_steps=29 format=3 uid="uid://nqay38cb1sw1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_x6kmk"]
 [ext_resource type="Texture2D" uid="uid://be2xjeeoywcug" path="res://art/Idle1.png" id="2_nkiai"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://buma46iayb2o6" path="res://art/sliding1left.png" id="23_oo82l"]
 [ext_resource type="Texture2D" uid="uid://ddqlhje5t53tb" path="res://art/sliding2left.png" id="24_md5dm"]
 [ext_resource type="Texture2D" uid="uid://dalw8g6qis5j1" path="res://art/sliding3left.png" id="25_ux118"]
+[ext_resource type="Texture2D" uid="uid://wnkntomflivr" path="res://art/health_full.png" id="26_x1nel"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jom1u"]
 animations = [{
@@ -153,3 +154,17 @@ shape = SubResource("CapsuleShape2D_dx15n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+
+[node name="Control" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -2100.0
+offset_top = -1715.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="health_bar" type="Sprite2D" parent="Camera2D/Control"]
+scale = Vector2(2, 2)
+texture = ExtResource("26_x1nel")

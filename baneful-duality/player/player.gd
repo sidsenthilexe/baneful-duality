@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var player_animations: AnimatedSprite2D = $AnimatedSprite2D
 
+var player_health = 0
 var move_array = []
 var last_moves_array = []
 const SPEED = 150.0
@@ -10,6 +11,19 @@ var double_jump_count = 0
 var possession_generator = RandomNumberGenerator.new()
 var possession_chances = 0;
 func _physics_process(delta: float) -> void:
+	if player_health == 5:
+		$Camera2D/Control/health_bar.texture = ResourceLoader.load("res://art/health_full.png")
+	if player_health == 4:
+		$Camera2D/Control/health_bar.texture = ResourceLoader.load("res://art/health_80.png")
+	if player_health == 3:
+		$Camera2D/Control/health_bar.texture = ResourceLoader.load("res://art/health_60.png")
+	if player_health == 2:
+		$Camera2D/Control/health_bar.texture = ResourceLoader.load("res://art/health_40.png")
+	if player_health == 1:
+		$Camera2D/Control/health_bar.texture = ResourceLoader.load("res://art/health_20.png")
+	if player_health == 0:
+		$Camera2D/Control/health_bar.texture = ResourceLoader.load("res://art/health_0.png")
+	
 	if move_array.size() > 3:
 		move_array.erase(0)
 	for i in move_array:
