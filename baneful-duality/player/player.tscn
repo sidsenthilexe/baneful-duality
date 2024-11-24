@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://nqay38cb1sw1"]
+[gd_scene load_steps=63 format=3 uid="uid://nqay38cb1sw1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_x6kmk"]
 [ext_resource type="Texture2D" uid="uid://be2xjeeoywcug" path="res://art/Idle1.png" id="2_nkiai"]
@@ -296,6 +296,9 @@ animations = [{
 radius = 223.05
 height = 821.23
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af7ct"]
+size = Vector2(635, 210)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(0.05, 0.05)
 script = ExtResource("1_x6kmk")
@@ -326,3 +329,12 @@ grow_horizontal = 2
 [node name="health_bar" type="Sprite2D" parent="Camera2D/Control"]
 scale = Vector2(2, 2)
 texture = ExtResource("26_x1nel")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-17.5, 320)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_af7ct")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

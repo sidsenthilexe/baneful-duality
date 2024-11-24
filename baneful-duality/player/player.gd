@@ -139,4 +139,15 @@ func _physics_process(delta: float) -> void:
 		if posession_boolean==true:
 			player_animations.play("posessionidle")
 	
+	if player_health <= 0:
+		player_health = 5
+		position.x = 255
+		position.y = 189
+
+		
+
 	move_and_slide()
+	
+func _on_area_2d_body_entered(body):
+	if body.name.begins_with("mob"):
+			player_health -= 1

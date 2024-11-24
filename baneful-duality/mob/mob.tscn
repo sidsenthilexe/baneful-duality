@@ -1,7 +1,107 @@
-[gd_scene format=3 uid="uid://dhkiu21mmpw60"]
+[gd_scene load_steps=12 format=3 uid="uid://dhkiu21mmpw60"]
+
+[ext_resource type="Texture2D" uid="uid://co4lbt6iiw2np" path="res://mob/zombie1.png" id="1_mb6vj"]
+[ext_resource type="Texture2D" uid="uid://bjvdbjr6y1kgj" path="res://mob/zombie2.png" id="2_3j1el"]
+[ext_resource type="Texture2D" uid="uid://dnoyp7rgfxvdg" path="res://mob/zombie3.png" id="3_6msnj"]
+[ext_resource type="Texture2D" uid="uid://c4kbvypi1b5iv" path="res://mob/zombie4.png" id="4_yuqqh"]
+[ext_resource type="Texture2D" uid="uid://07mxp4gtiifm" path="res://mob/zombie1reversed.png" id="5_onkvf"]
+[ext_resource type="Texture2D" uid="uid://byo15oppcqfq1" path="res://mob/zombie2reversed.png" id="6_6u7es"]
+[ext_resource type="Texture2D" uid="uid://bp40sfof3mnw8" path="res://mob/zombie3reversed.png" id="7_i6u4r"]
+[ext_resource type="Texture2D" uid="uid://cnhf2c2y4l3tb" path="res://mob/zombie4reversed.png" id="8_68xr5"]
+
+[sub_resource type="GDScript" id="GDScript_2onpb"]
+script/source = "extends CharacterBody2D
+
+@onready var check_ground = $checkGround
+@onready var check_left = $checkLeft
+@onready var check_right = $checkRight
+
+@onready var mob_animations: AnimatedSprite2D = $AnimatedSprite2D
+
+
+const SPEED = 75
+
+var mob_health = 5
+
+var direction = 1
+
+func _physics_process(delta):
+	if not check_ground.is_colliding():
+		direction = -1
+		mob_animations.play(\"walk_left\")
+	if check_left.is_colliding():
+		direction = 1
+		mob_animations.play(\"walk\")
+	if check_right.is_colliding():
+		direction = -1
+		mob_animations.play(\"walk_left\")
+	
+	position.x = position.x + direction * SPEED * delta
+	
+
+	move_and_slide()
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f76wd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mb6vj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3j1el")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6msnj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yuqqh")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_onkvf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6u7es")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i6u4r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_68xr5")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fevsj"]
+radius = 260.0
+height = 760.0
 
 [node name="mob" type="CharacterBody2D"]
+scale = Vector2(0.05, 0.05)
+script = SubResource("GDScript_2onpb")
 
-[node name="mob" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f76wd")
+animation = &"walk_left"
 
 [node name="mob2" type="CollisionShape2D" parent="."]
+position = Vector2(20, 320)
+shape = SubResource("CapsuleShape2D_fevsj")
+
+[node name="checkGround" type="RayCast2D" parent="."]
+target_position = Vector2(20, 800)
+
+[node name="checkLeft" type="RayCast2D" parent="."]
+scale = Vector2(1, 1)
+target_position = Vector2(-340, 320)
+
+[node name="checkRight" type="RayCast2D" parent="."]
+scale = Vector2(1, 1)
+target_position = Vector2(400, 320)
