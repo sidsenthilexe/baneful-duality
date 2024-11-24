@@ -1,21 +1,36 @@
-[gd_scene load_steps=5 format=4 uid="uid://1db0tkvbu41f"]
+[gd_scene load_steps=9 format=4 uid="uid://cnv47n2girq3r"]
 
 [ext_resource type="PackedScene" uid="uid://nqay38cb1sw1" path="res://player/player.tscn" id="1_jc4mq"]
-[ext_resource type="Texture2D" uid="uid://bqalhxiqlpu4j" path="res://player_sprite.png" id="1_weqgs"]
+[ext_resource type="Texture2D" uid="uid://dldcpp7cuvo2i" path="res://main/Tileset1.png" id="1_wdghb"]
+[ext_resource type="Texture2D" uid="uid://d24xjuskud8a7" path="res://main/Tileset2.png" id="2_8dvge"]
+[ext_resource type="Texture2D" uid="uid://boq1jecdwnqu3" path="res://main/Tileset3.png" id="3_b0uir"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rilgr"]
-texture = ExtResource("1_weqgs")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_60ke8"]
+texture = ExtResource("1_wdghb")
+texture_region_size = Vector2i(500, 500)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-250, -250, 250, -250, 250, 250, -250, 250)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qhla8"]
+texture = ExtResource("2_8dvge")
+texture_region_size = Vector2i(500, 500)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8rcy7"]
+texture = ExtResource("3_b0uir")
+texture_region_size = Vector2i(500, 500)
 
 [sub_resource type="TileSet" id="TileSet_clggf"]
+tile_size = Vector2i(500, 500)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_rilgr")
+sources/3 = SubResource("TileSetAtlasSource_60ke8")
+sources/4 = SubResource("TileSetAtlasSource_qhla8")
+sources/5 = SubResource("TileSetAtlasSource_8rcy7")
 
 [node name="main" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAAOAA4AAAAAAAAAAAAPAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAARAA4AAAAAAAAAAAANAA4AAAAAAAAAAAAMAA4AAAAAAAAAAAALAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAASAA4AAAAAAAAAAAATAA4AAAAAAAAAAAAUAA4AAAAAAAAAAAAVAA4AAAAAAAAAAAAWAA4AAAAAAAAAAAAXAA4AAAAAAAAAAAAYAA4AAAAAAAAAAAAZAA4AAAAAAAAAAAA=")
+scale = Vector2(0.05, 0.05)
+tile_map_data = PackedByteArray("AAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAAOAA4AAAAAAAAAAAAPAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAARAA4AAAAAAAAAAAANAA4AAAAAAAAAAAAMAA4AAAAAAAAAAAALAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAASAA4AAAAAAAAAAAATAA4AAAAAAAAAAAAUAA4AAAAAAAAAAAAVAA4AAAAAAAAAAAAWAA4AAAAAAAAAAAAXAA4AAAAAAAAAAAAYAA4AAAAAAAAAAAAZAA4AAAAAAAAAAAAZABQAAwAAAAAAAAA=")
 tile_set = SubResource("TileSet_clggf")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_jc4mq")]
