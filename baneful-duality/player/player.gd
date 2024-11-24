@@ -47,6 +47,17 @@ func _physics_process(delta: float) -> void:
 		move_array.append("-1")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	if Input.is_action_pressed("move_down"):
+		print("test")
+		print(direction)
+		if direction == 1:
+			player_animations.play("sliding")
+		elif direction == -1:
+			player_animations.play("slidingleft")
+		velocity.x = 1.5 * direction * SPEED
+
+		
 	if possession_chances > 9900 and possession_chances < 9975:
 		for e in last_moves_array:
 			if e == "1":
@@ -60,7 +71,7 @@ func _physics_process(delta: float) -> void:
 		move_array.clear()
 		last_moves_array.clear()
 		
-	if not is_on_floor():
+	if not is_on_floor() and Input.is_action_pressed("move_up"):
 		player_animations.play("jumping")
 	if is_on_floor() and velocity.x == 0:
 		player_animations.play("idle")

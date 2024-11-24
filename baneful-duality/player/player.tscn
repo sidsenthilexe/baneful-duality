@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://nqay38cb1sw1"]
+[gd_scene load_steps=28 format=3 uid="uid://nqay38cb1sw1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_x6kmk"]
 [ext_resource type="Texture2D" uid="uid://be2xjeeoywcug" path="res://art/Idle1.png" id="2_nkiai"]
@@ -19,6 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://ci80fw7ilphuk" path="res://art/Running4left.png" id="14_dy7xw"]
 [ext_resource type="Texture2D" uid="uid://b56ndwh40jljq" path="res://art/Running5left.png" id="15_7kn6b"]
 [ext_resource type="Texture2D" uid="uid://ds0d5w01g83e2" path="res://art/Running6left.png" id="16_gsab4"]
+[ext_resource type="Texture2D" uid="uid://dsoh1ei3bgkdc" path="res://art/sliding1.png" id="20_rgj5h"]
+[ext_resource type="Texture2D" uid="uid://dsnfpkw3a3n58" path="res://art/sliding2.png" id="21_skw5g"]
+[ext_resource type="Texture2D" uid="uid://cmmy40e51fwhn" path="res://art/sliding3.png" id="22_8pdrs"]
+[ext_resource type="Texture2D" uid="uid://buma46iayb2o6" path="res://art/sliding1left.png" id="23_oo82l"]
+[ext_resource type="Texture2D" uid="uid://ddqlhje5t53tb" path="res://art/sliding2left.png" id="24_md5dm"]
+[ext_resource type="Texture2D" uid="uid://dalw8g6qis5j1" path="res://art/sliding3left.png" id="25_ux118"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jom1u"]
 animations = [{
@@ -98,6 +104,34 @@ animations = [{
 "loop": true,
 "name": &"runningleft",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_rgj5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_skw5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_8pdrs")
+}],
+"loop": true,
+"name": &"sliding",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_oo82l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_md5dm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ux118")
+}],
+"loop": true,
+"name": &"slidingleft",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dx15n"]
@@ -110,7 +144,7 @@ script = ExtResource("1_x6kmk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jom1u")
-animation = &"idle"
+animation = &"sliding"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
