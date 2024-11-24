@@ -28,6 +28,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("move_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		move_array.append("2")
+		player_animations.play("jumping")
 	if Input.is_action_just_pressed("move_up") and not is_on_floor() and double_jump_count == 0:
 		double_jump_count += 1
 		velocity.y = JUMP_VELOCITY
@@ -46,7 +47,6 @@ func _physics_process(delta: float) -> void:
 		move_array.append("-1")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		player_animations.play("idle")
 	if possession_chances > 9900 and possession_chances < 9975:
 		for e in last_moves_array:
 			if e == "1":
@@ -60,4 +60,8 @@ func _physics_process(delta: float) -> void:
 		move_array.clear()
 		last_moves_array.clear()
 		
+	if not is_on_floor():
+		player_animations.play("jumping")
+	if is_on_floor() and velocity.x == 0:
+		player_animations.play("idle")
 	move_and_slide()
