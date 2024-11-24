@@ -8,12 +8,14 @@ var player_health = 0
 var possession_start=false
 var move_array = []
 var last_moves_array = []
-var speed = 300.0
+var speed = 275.0
 const JUMP_VELOCITY = -400.0
 var double_jump_count = 0
 var possession_generator = RandomNumberGenerator.new()
 var possession_chances = 0;
 
+func play_pos_anim():
+	player_animations.play("posession")
 
 func _physics_process(delta: float) -> void:
 	if player_health == 5:
@@ -54,12 +56,12 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY*0.95
 
 	if posession_boolean==true:
-		speed=175.00
+		speed=500.00
 	if posession_boolean==false:
-		speed=300.00
+		speed=999.00
 
 	var direction := Input.get_axis("move_left", "move_right")
-	if direction:
+	if direction:	
 		velocity.x = direction * speed
 	if (direction == 1):
 		if posession_boolean==false:
@@ -90,18 +92,31 @@ func _physics_process(delta: float) -> void:
 	# 		pass
 			
 			
-		
+#cave 1 possession
 	if position.x>=15460 and position.x<=15600:
 		position.x=15700
 		position.y=100
 		posession_boolean=true
-		player_animations.play("posession")
-	#if position.x>= and position.x<=:
-		position.x=0
-		position.y=0
+		
+		play_pos_anim()
+	if position.x>=21160 and position.x<=21170:
+		position.x=21300
+		position.y=238
 		posession_boolean=false
 	print(position.x)
 	print(position.y)
+
+#cave 2 possession
+	if position.x>=25340 and position.x<=25600:
+		position.x=25600
+		position.y=260
+		posession_boolean=true
+		
+		play_pos_anim()
+	if position.x>=34200 and position.x<=34200:
+		position.x=34500
+		position.y=-11
+		posession_boolean=false
 
 	#if possession_chances > 9900 and possession_chances < 9975:
 		#for e in last_moves_array:
