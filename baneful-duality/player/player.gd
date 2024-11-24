@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 var move_array = []
 var last_moves_array = []
-const SPEED = 275.0
+const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
 var double_jump_count = 0
 var possession_generator = RandomNumberGenerator.new()
@@ -25,10 +25,11 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
+	if Input.is_action_pressed("move_up") and is_on_floor():
+		player_animations.play("jumping")
 	if Input.is_action_just_pressed("move_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY*0.95
 		move_array.append("2")
-		player_animations.play("jumping")
 	if Input.is_action_just_pressed("move_up") and not is_on_floor() and double_jump_count == 0:
 		double_jump_count += 1
 		velocity.y = JUMP_VELOCITY*0.95
@@ -75,4 +76,5 @@ func _physics_process(delta: float) -> void:
 		player_animations.play("jumping")
 	if is_on_floor() and velocity.x == 0:
 		player_animations.play("idle")
+	
 	move_and_slide()
