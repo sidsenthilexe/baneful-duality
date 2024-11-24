@@ -26,12 +26,12 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("move_up") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY*0.95
 		move_array.append("2")
 		player_animations.play("jumping")
 	if Input.is_action_just_pressed("move_up") and not is_on_floor() and double_jump_count == 0:
 		double_jump_count += 1
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY*0.95
 				
 			
 	# Get the input direction and handle the movement/deceleration.
