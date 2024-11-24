@@ -102,8 +102,3 @@ shape = SubResource("CapsuleShape2D_dx15n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
-
-[node name="double_jump_timer" type="Timer" parent="."]
-wait_time = 0.2
-
-[connection signal="timeout" from="double_jump_timer" to="." method="_on_double_jump_timer_timeout"]
