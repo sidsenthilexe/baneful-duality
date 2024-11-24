@@ -1,37 +1,41 @@
-[gd_scene load_steps=9 format=4 uid="uid://cnv47n2girq3r"]
+[gd_scene load_steps=9 format=4 uid="uid://1db0tkvbu41f"]
 
 [ext_resource type="PackedScene" uid="uid://nqay38cb1sw1" path="res://player/player.tscn" id="1_jc4mq"]
-[ext_resource type="Texture2D" uid="uid://dldcpp7cuvo2i" path="res://main/Tileset1.png" id="1_wdghb"]
-[ext_resource type="Texture2D" uid="uid://d24xjuskud8a7" path="res://main/Tileset2.png" id="2_8dvge"]
-[ext_resource type="Texture2D" uid="uid://boq1jecdwnqu3" path="res://main/Tileset3.png" id="3_b0uir"]
+[ext_resource type="Texture2D" uid="uid://dldcpp7cuvo2i" path="res://main/Tileset1.png" id="1_r5ji8"]
+[ext_resource type="Texture2D" uid="uid://d24xjuskud8a7" path="res://main/Tileset2.png" id="2_4ta1s"]
+[ext_resource type="Texture2D" uid="uid://boq1jecdwnqu3" path="res://main/Tileset3.png" id="3_bgik3"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_60ke8"]
-texture = ExtResource("1_wdghb")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjm81"]
+texture = ExtResource("1_r5ji8")
 texture_region_size = Vector2i(500, 500)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-250, -250, 250, -250, 250, 250, -250, 250)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qhla8"]
-texture = ExtResource("2_8dvge")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_txscx"]
+texture = ExtResource("2_4ta1s")
 texture_region_size = Vector2i(500, 500)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-250, -250, 250, -250, 250, 250, -250, 250)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8rcy7"]
-texture = ExtResource("3_b0uir")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_smxwd"]
+texture = ExtResource("3_bgik3")
 texture_region_size = Vector2i(500, 500)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-250, -250, 250, -250, 250, 250, -250, 250)
 
-[sub_resource type="TileSet" id="TileSet_clggf"]
+[sub_resource type="TileSet" id="TileSet_s1hm3"]
 tile_size = Vector2i(500, 500)
 physics_layer_0/collision_layer = 1
-sources/3 = SubResource("TileSetAtlasSource_60ke8")
-sources/4 = SubResource("TileSetAtlasSource_qhla8")
-sources/5 = SubResource("TileSetAtlasSource_8rcy7")
+sources/1 = SubResource("TileSetAtlasSource_jjm81")
+sources/2 = SubResource("TileSetAtlasSource_txscx")
+sources/3 = SubResource("TileSetAtlasSource_smxwd")
 
 [node name="main" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(0.05, 0.05)
-tile_map_data = PackedByteArray("AAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAAOAA4AAAAAAAAAAAAPAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAARAA4AAAAAAAAAAAANAA4AAAAAAAAAAAAMAA4AAAAAAAAAAAALAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAASAA4AAAAAAAAAAAATAA4AAAAAAAAAAAAUAA4AAAAAAAAAAAAVAA4AAAAAAAAAAAAWAA4AAAAAAAAAAAAXAA4AAAAAAAAAAAAYAA4AAAAAAAAAAAAZAA4AAAAAAAAAAAAZABQAAwAAAAAAAAA=")
-tile_set = SubResource("TileSet_clggf")
+tile_map_data = PackedByteArray("AAD+/woAAgAAAAAAAAD//woAAgAAAAAAAAAAAAoAAgAAAAAAAAABAAoAAgAAAAAAAAACAAoAAgAAAAAAAAADAAoAAgAAAAAAAAAEAAoAAgAAAAAAAAAFAAoAAgAAAAAAAAAGAAoAAgAAAAAAAAAHAAoAAgAAAAAAAAAIAAoAAgAAAAAAAAAJAAoAAgAAAAAAAAAKAAoAAgAAAAAAAAALAAoAAgAAAAAAAAAMAAoAAgAAAAAAAAANAAoAAgAAAAAAAAAOAAoAAgAAAAAAAAAPAAoAAgAAAAAAAAAQAAoAAgAAAAAAAAARAAoAAgAAAAAAAAASAAoAAgAAAAAAAAATAAoAAgAAAAAAAAAUAAoAAgAAAAAAAAAVAAoAAgAAAAAAAAAWAAoAAgAAAAAAAAAXAAoAAgAAAAAAAAAMAAkAAgAAAAAAAAANAAkAAgAAAAAAAAAOAAkAAgAAAAAAAAAOAAcAAgAAAAAAAAAPAAcAAgAAAAAAAAAQAAcAAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_s1hm3")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_jc4mq")]
 position = Vector2(255, 156)
