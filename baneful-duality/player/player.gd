@@ -56,9 +56,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY*0.95
 
 	if posession_boolean==true:
-		speed=500.00
+		speed=175.00
 	if posession_boolean==false:
-		speed=999.00
+		speed=270.00
 
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:	
