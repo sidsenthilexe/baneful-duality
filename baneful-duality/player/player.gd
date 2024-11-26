@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
 @onready var player_animations: AnimatedSprite2D = $AnimatedSprite2D
-var posession_boolean = false
+#@onready var main_reference: 	
+@export var Bullet : PackedScene
+var possession_boolean = false
 
 var slide_check=0
 var player_health = 0
@@ -16,6 +18,11 @@ var possession_chances = 0;
 
 func play_pos_anim():
 	player_animations.play("posession")
+
+func shoot():
+	var bullet_instance = Bullet.instantiate()
+	#parent.add_child(bullet_instance)
+	bullet_instance.transform = $Marker2D.transform
 
 func _physics_process(delta: float) -> void:
 	if player_health == 5:
@@ -46,7 +53,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_pressed("move_up") and is_on_floor() and posession_boolean==false:
+	if Input.is_action_pressed("move_up") and is_on_floor() and possession_boolean==false:
 		player_animations.play("jumping")
 	if Input.is_action_just_pressed("move_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY*0.95
@@ -55,24 +62,28 @@ func _physics_process(delta: float) -> void:
 		double_jump_count += 1
 		velocity.y = JUMP_VELOCITY*0.95
 
-	if posession_boolean==true:
+	if Input.is_action_just_pressed("attack") and possession_boolean==true:
+		shoot()
+	
+
+	if possession_boolean==true:
 		speed=175.00
-	if posession_boolean==false:
+	if possession_boolean==false:
 		speed=270.00
 
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:	
 		velocity.x = direction * speed
 	if (direction == 1):
-		if posession_boolean==false:
+		if possession_boolean==false:
 			player_animations.play("running")
-		if posession_boolean==true:
+		if possession_boolean==true:
 			player_animations.play("posessionrunright")
 		move_array.append("1")
 	elif (direction == -1):
-		if posession_boolean==false:
+		if possession_boolean==false:
 			player_animations.play("runningleft")
-		if posession_boolean==true:
+		if possession_boolean==true:
 			player_animations.play("posessionrunleft")
 		move_array.append("-1")
 	else:
@@ -96,13 +107,13 @@ func _physics_process(delta: float) -> void:
 	if position.x>=15460 and position.x<=15600:
 		position.x=15700
 		position.y=100
-		posession_boolean=true
+		possession_boolean=true
 		
 		play_pos_anim()
 	if position.x>=21160 and position.x<=21170:
 		position.x=21300
 		position.y=238
-		posession_boolean=false
+		possession_boolean=false
 	print(position.x)
 	print(position.y)
 
@@ -110,13 +121,13 @@ func _physics_process(delta: float) -> void:
 	if position.x>=25340 and position.x<=25600:
 		position.x=25600
 		position.y=260
-		posession_boolean=true
+		possession_boolean=true
 		
 		play_pos_anim()
 	if position.x>=34200 and position.x<=34200:
 		position.x=34500
 		position.y=-11
-		posession_boolean=false
+		possession_boolean=false
 
 	#if possession_chances > 9900 and possession_chances < 9975:
 		#for e in last_moves_array:
@@ -131,12 +142,12 @@ func _physics_process(delta: float) -> void:
 		# move_array.clear()
 		# last_moves_array.clear()
 		
-	if not is_on_floor() and Input.is_action_pressed("move_up") and posession_boolean==false:
+	if not is_on_floor() and Input.is_action_pressed("move_up") and possession_boolean==false:
 		player_animations.play("jumping")
 	if is_on_floor() and velocity.x == 0:
-		if posession_boolean==false:
+		if possession_boolean==false:
 			player_animations.play("idle")
-		if posession_boolean==true:
+		if possession_boolean==true:
 			player_animations.play("posessionidle")
 	
 	if player_health <= 0:
