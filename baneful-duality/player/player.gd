@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var player_animations: AnimatedSprite2D = $AnimatedSprite2D
-#@onready var main_reference: 	
+@onready var main_reference: Node2D = $main
 @export var Bullet : PackedScene
 var possession_boolean = false
 
@@ -21,7 +21,7 @@ func play_pos_anim():
 
 func shoot():
 	var bullet_instance = Bullet.instantiate()
-	#parent.add_child(bullet_instance)
+	main_reference.add_child(bullet_instance)
 	bullet_instance.transform = $Marker2D.transform
 
 func _physics_process(delta: float) -> void:
