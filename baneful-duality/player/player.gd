@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var player_animations: AnimatedSprite2D = $AnimatedSprite2D
 @onready var main_reference = load("res://main/main.tscn")
 @onready var Bullet : PackedScene = preload("res://bullet/bullet.tscn")
+@onready var m2d: Marker2D = $Marker2D
 
 var slide_check=0
 var player_health = 0

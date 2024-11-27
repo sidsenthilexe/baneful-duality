@@ -13,16 +13,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if Input.is_action_just_pressed("attack") and Global.possession_bool == true:
-		bullet_direction = Global.player_direction
-		visible = true
-		timer.start()
+	bullet_direction = Global.player_direction
+	visible = true
+	timer.start()
 	position += transform.x*speed*delta*bullet_direction
 
 
 func _on_body_entered(body):
 	if body.name.begins_with("mob"):
-		visible = false
+		body.queue_free()
+	queue_free()
 
 
 func _on_timer_timeout():

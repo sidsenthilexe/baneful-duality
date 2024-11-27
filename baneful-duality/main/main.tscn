@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://nifokw8ah00w" path="res://main/Tileset9.png" id="19_ar21l"]
 [ext_resource type="Texture2D" uid="uid://conbad70oc56m" path="res://art/backgroundcity.png" id="21_tjg6r"]
 [ext_resource type="PackedScene" uid="uid://dhkiu21mmpw60" path="res://mob/mob.tscn" id="31_pbinf"]
-[ext_resource type="PackedScene" uid="uid://jtacp2tbk35l" path="res://bullet/bullet.tscn" id="32_v6p2w"]
+[ext_resource type="AudioStream" uid="uid://1p4r6ltbv7np" path="res://music/level_3.mp3" id="33_g7ewh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e1ujc"]
 texture = ExtResource("21_tjg6r")
@@ -255,5 +255,7 @@ position = Vector2(255, 156)
 [node name="mob" parent="." instance=ExtResource("31_pbinf")]
 position = Vector2(2951, 268)
 
-[node name="Bullet" parent="." instance=ExtResource("32_v6p2w")]
-position = Vector2(-841, -129)
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_g7ewh")
+autoplay = true
+parameters/looping = true
