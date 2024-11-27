@@ -99,9 +99,7 @@ shape = SubResource("CapsuleShape2D_fevsj")
 target_position = Vector2(20, 800)
 
 [node name="checkLeft" type="RayCast2D" parent="."]
-scale = Vector2(1, 1)
 target_position = Vector2(-340, 320)
 
 [node name="checkRight" type="RayCast2D" parent="."]
-scale = Vector2(1, 1)
 target_position = Vector2(400, 320)

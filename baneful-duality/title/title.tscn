@@ -8067,15 +8067,17 @@ tile_map_data = PackedByteArray(0, 0, 58, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_tnj6r")
 
 [node name="Button" type="Button" parent="."]
-offset_left = 848.0
-offset_top = 408.0
-offset_right = 1256.0
-offset_bottom = 816.0
+offset_left = 512.0
+offset_top = 448.0
+offset_right = 1056.0
+offset_bottom = 856.0
+scale = Vector2(0.471, 0.471)
 icon = ExtResource("3_4qrg8")
+icon_alignment = 1
 
 [node name="BanefulDualityTitle" type="Sprite2D" parent="."]
-position = Vector2(456, 292)
-scale = Vector2(1.6, 1.3)
+position = Vector2(640, 216)
+scale = Vector2(1.92, 1.056)
 texture = ExtResource("5_5odl8")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
