@@ -3,7 +3,6 @@ extends CharacterBody2D
 @onready var player_animations: AnimatedSprite2D = $AnimatedSprite2D
 @onready var main_reference = load("res://main/main.tscn")
 @onready var Bullet : PackedScene = preload("res://bullet/bullet.tscn")
-var possession_boolean = false
 
 var slide_check=0
 var player_health = 0
@@ -55,7 +54,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_pressed("move_up") and is_on_floor() and possession_boolean==false:
+	if Input.is_action_pressed("move_up") and is_on_floor() and Global.possession_bool==false:
 		player_animations.play("jumping")
 	if Input.is_action_just_pressed("move_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY*0.95
@@ -63,30 +62,33 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("move_up") and not is_on_floor() and double_jump_count == 0:
 		double_jump_count += 1
 		velocity.y = JUMP_VELOCITY*0.95
-	if Input.is_action_just_pressed("attack") and possession_boolean==true:
-		print("shot fired")
-		var bullet_instance = Bullet.instantiate()
-		get_parent.add_child(bullet_instance)
-		bullet_instance.transform = $Marker2D.transform
+	#if Input.is_action_just_pressed("attack") and possession_boolean==true:
+		#print("shot fired")
+		#var bullet_instance = Bullet.instantiate()
+		#print(get_parent())
+		#get_parent().add_child(bullet_instance)
+		#bullet_instance.transform = $Marker2D.transform
 
-	if possession_boolean==true:
+	if Global.possession_bool==true:
 		speed=999.00
-	if possession_boolean==false:
+	if Global.possession_bool==false:
 		speed=999.00
 
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:	
 		velocity.x = direction * speed
 	if (direction == 1):
-		if possession_boolean==false:
+		Global.player_direction = 1
+		if Global.possession_bool==false:
 			player_animations.play("running")
-		if possession_boolean==true:
+		if Global.possession_bool==true:
 			player_animations.play("posessionrunright")
 		move_array.append("1")
 	elif (direction == -1):
-		if possession_boolean==false:
+		Global.player_direction = -1
+		if Global.possession_bool==false:
 			player_animations.play("runningleft")
-		if possession_boolean==true:
+		if Global.possession_bool==true:
 			player_animations.play("posessionrunleft")
 		move_array.append("-1")
 	else:
@@ -110,27 +112,27 @@ func _physics_process(delta: float) -> void:
 	if position.x>=15460 and position.x<=15600:
 		position.x=15700
 		position.y=100
-		possession_boolean=true
+		Global.possession_bool=true
 		
 		play_pos_anim()
 	if position.x>=21160 and position.x<=21170:
 		position.x=21300
 		position.y=238
-		possession_boolean=false
-	print(position.x)
-	print(position.y)
+		Global.possession_bool=false
+	#print(position.x)
+	#print(position.y)
 
 #cave 2 possession
 	if position.x>=25340 and position.x<=25600:
 		position.x=25600
 		position.y=260
-		possession_boolean=true
+		Global.possession_bool=true
 		
 		play_pos_anim()
 	if position.x>=34200 and position.x<=34200:
 		position.x=34500
 		position.y=-11
-		possession_boolean=false
+		Global.possession_bool=false
 
 	#if possession_chances > 9900 and possession_chances < 9975:
 		#for e in last_moves_array:
@@ -145,12 +147,12 @@ func _physics_process(delta: float) -> void:
 		# move_array.clear()
 		# last_moves_array.clear()
 		
-	if not is_on_floor() and Input.is_action_pressed("move_up") and possession_boolean==false:
+	if not is_on_floor() and Input.is_action_pressed("move_up") and Global.possession_bool==false:
 		player_animations.play("jumping")
 	if is_on_floor() and velocity.x == 0:
-		if possession_boolean==false:
+		if Global.possession_bool==false:
 			player_animations.play("idle")
-		if possession_boolean==true:
+		if Global.possession_bool==true:
 			player_animations.play("posessionidle")
 	
 	if player_health <= 0:

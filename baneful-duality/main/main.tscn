@@ -1,5 +1,6 @@
-[gd_scene load_steps=64 format=4 uid="uid://cnv47n2girq3r"]
+[gd_scene load_steps=65 format=4 uid="uid://cnv47n2girq3r"]
 
+[ext_resource type="Script" path="res://main/main.gd" id="1_15dny"]
 [ext_resource type="PackedScene" uid="uid://nqay38cb1sw1" path="res://player/player.tscn" id="1_jc4mq"]
 [ext_resource type="Texture2D" uid="uid://dldcpp7cuvo2i" path="res://main/Tileset1.png" id="1_r5ji8"]
 [ext_resource type="Texture2D" uid="uid://wrk0y7xidrk2" path="res://main/Tileset10.png" id="2_2vd25"]
@@ -235,6 +236,7 @@ sources/19 = SubResource("TileSetAtlasSource_qolm8")
 sources/20 = SubResource("TileSetAtlasSource_3v1d0")
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_15dny")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 position = Vector2(1.52588e-05, 1.52588e-05)
