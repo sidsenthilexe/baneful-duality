@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @onready var player_animations: AnimatedSprite2D = $AnimatedSprite2D
-@onready var main_reference: Node2D = $main
-@export var Bullet : PackedScene
+@onready var main_reference = load("res://main/main.tscn")
+@onready var Bullet = preload("res://bullet/bullet.tscn")
 var possession_boolean = false
 
 var slide_check=0
@@ -19,10 +19,15 @@ var possession_chances = 0;
 func play_pos_anim():
 	player_animations.play("posession")
 
-func shoot():
-	var bullet_instance = Bullet.instantiate()
-	main_reference.add_child(bullet_instance)
-	bullet_instance.transform = $Marker2D.transform
+func _ready() -> void:
+	pass
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("attack") and possession_boolean==true:
+		var bullet_instance = Bullet.instantiate()
+		add_child(bullet_instance)
+		bullet_instance.transform = $Marker2D.transform
+	
 
 func _physics_process(delta: float) -> void:
 	if player_health == 5:
@@ -62,8 +67,7 @@ func _physics_process(delta: float) -> void:
 		double_jump_count += 1
 		velocity.y = JUMP_VELOCITY*0.95
 
-	if Input.is_action_just_pressed("attack") and possession_boolean==true:
-		shoot()
+	
 	
 
 	if possession_boolean==true:

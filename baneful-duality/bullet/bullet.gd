@@ -8,12 +8,12 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	position += transform.x*speed*delta
 	
 
 
-func _on_body_entered(body: Node2D):
+func _on_body_entered(body):
 	if body.name.begins_with("mob"):
 		body.queue_free()
 	queue_free()
