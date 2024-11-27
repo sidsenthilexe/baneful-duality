@@ -66,9 +66,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and possession_boolean==true:
 		print("shot fired")
 		var bullet_instance = Bullet.instantiate()
+		get_parent.add_child(bullet_instance)
 		bullet_instance.transform = $Marker2D.transform
-		main_reference.add_child(bullet_instance)
-		
 
 	if possession_boolean==true:
 		speed=999.00
