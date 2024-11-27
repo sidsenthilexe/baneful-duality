@@ -67,8 +67,6 @@ func _physics_process(delta: float) -> void:
 		double_jump_count += 1
 		velocity.y = JUMP_VELOCITY*0.95
 
-	
-	
 
 	if possession_boolean==true:
 		speed=175.00
