@@ -13,9 +13,9 @@ func _process(delta: float) -> void:
 
 
 func _on_audio_stream_player_finished() -> void:
-	get_tree().change_scene_to_file("title_scene")
+	get_tree().change_scene_to_file("res://title/title.tscn")
 
 
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("title_scene")
+	get_tree().change_scene_to_file("res://title/title.tscn")
