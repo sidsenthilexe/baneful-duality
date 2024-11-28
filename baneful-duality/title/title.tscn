@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://title/title.gd" id="1_py32l"]
 [ext_resource type="Texture2D" uid="uid://dnjy82gvv5gom" path="res://art/Untitled_Artwork.jpg" id="1_vc56u"]
-[ext_resource type="AudioStream" uid="uid://dwdlvi3t16m3r" path="res://music/ost.mp3" id="1_vrfsp"]
 [ext_resource type="Texture2D" uid="uid://tx5txp8iykl5" path="res://art/titlepanorama2.png" id="2_f1r0n"]
 [ext_resource type="Script" path="res://title/backgroundcity.gd" id="3_ypru7"]
+[ext_resource type="AudioStream" uid="uid://m6j2k3k2vwss" path="res://music/ost_with_a_beat.mp3" id="4_txbp3"]
 [ext_resource type="Texture2D" uid="uid://b53xr0l1emq26" path="res://music/baneful_duality_title.png" id="5_5odl8"]
 [ext_resource type="Texture2D" uid="uid://b5j4n6lf0g3xq" path="res://art/playbutton.png" id="5_noxln"]
 [ext_resource type="Texture2D" uid="uid://dcqypv0hka6ct" path="res://art/quitbutton.png" id="6_5666j"]
@@ -8066,7 +8066,8 @@ texture = ExtResource("2_f1r0n")
 script = ExtResource("3_ypru7")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_vrfsp")
+stream = ExtResource("4_txbp3")
+volume_db = -15.0
 autoplay = true
 parameters/looping = true
 
