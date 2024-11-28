@@ -27,6 +27,7 @@ func _process(_delta: float) -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	Global.player_positionx = position.x
 	if player_health == 5:
 		$Camera2D/Control/health_bar.texture = ResourceLoader.load("res://art/health_full.png")
 	if player_health == 4:

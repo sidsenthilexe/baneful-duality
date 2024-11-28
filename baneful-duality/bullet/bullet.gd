@@ -13,9 +13,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	bullet_direction = Global.player_direction
+	if abs(Global.player_positionx - position.x) < 15:
+		bullet_direction = Global.player_direction
 	visible = true
-	timer.start()
 	position += transform.x*speed*delta*bullet_direction
 
 
@@ -25,8 +25,3 @@ func _on_body_entered(body):
 		queue_free()
 	if body.name.begins_with("Tiles"):
 		queue_free()
-
-
-func _on_timer_timeout():
-	print("test")
-	visible = false

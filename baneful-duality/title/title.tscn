@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://m6j2k3k2vwss" path="res://music/ost_with_a_beat.mp3" id="4_txbp3"]
 [ext_resource type="Texture2D" uid="uid://b53xr0l1emq26" path="res://music/baneful_duality_title.png" id="5_5odl8"]
 [ext_resource type="Texture2D" uid="uid://b5j4n6lf0g3xq" path="res://art/playbutton.png" id="5_noxln"]
-[ext_resource type="Texture2D" uid="uid://dcqypv0hka6ct" path="res://art/quitbutton.png" id="6_5666j"]
+[ext_resource type="Texture2D" uid="uid://riav7ivs7kfd" path="res://art/quitbuttonupdated.png" id="7_rbcm6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bokr2"]
 texture = ExtResource("1_vc56u")
@@ -8091,7 +8091,7 @@ offset_top = 576.0
 offset_right = 1056.0
 offset_bottom = 780.0
 scale = Vector2(0.471, 0.471)
-icon = ExtResource("6_5666j")
+icon = ExtResource("7_rbcm6")
 icon_alignment = 1
 
 [node name="BanefulDualityTitle" type="Sprite2D" parent="."]
