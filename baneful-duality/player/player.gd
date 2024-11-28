@@ -10,7 +10,7 @@ var player_health = 0
 var possession_start=false
 var move_array = []
 var last_moves_array = []
-var speed = 275.0
+var speed = 150
 const JUMP_VELOCITY = -400.0
 var double_jump_count = 0
 var possession_generator = RandomNumberGenerator.new()
@@ -72,9 +72,9 @@ func _physics_process(delta: float) -> void:
 		#bullet_instance.transform = $Marker2D.transform
 
 	if Global.possession_bool==true:
-		speed=999.00
+		speed=500.00
 	if Global.possession_bool==false:
-		speed=999.00
+		speed=500.00
 
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:	
