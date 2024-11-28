@@ -22,7 +22,9 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if body.name.begins_with("mob"):
 		body.queue_free()
-	queue_free()
+		queue_free()
+	if body.name.begins_with("Tiles"):
+		queue_free()
 
 
 func _on_timer_timeout():
