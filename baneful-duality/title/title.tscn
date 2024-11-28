@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2nv3otui8vdk"]
+[gd_scene load_steps=11 format=3 uid="uid://c2nv3otui8vdk"]
 
 [ext_resource type="Script" path="res://title/title.gd" id="1_py32l"]
 [ext_resource type="Texture2D" uid="uid://dnjy82gvv5gom" path="res://art/Untitled_Artwork.jpg" id="1_vc56u"]
 [ext_resource type="AudioStream" uid="uid://dwdlvi3t16m3r" path="res://music/ost.mp3" id="1_vrfsp"]
-[ext_resource type="Texture2D" uid="uid://bai1xpa5ortra" path="res://art/Your_paragraph_text_1_processed.png" id="3_4qrg8"]
+[ext_resource type="Texture2D" uid="uid://tx5txp8iykl5" path="res://art/titlepanorama2.png" id="2_f1r0n"]
+[ext_resource type="Script" path="res://title/backgroundcity.gd" id="3_ypru7"]
 [ext_resource type="Texture2D" uid="uid://b53xr0l1emq26" path="res://music/baneful_duality_title.png" id="5_5odl8"]
+[ext_resource type="Texture2D" uid="uid://b5j4n6lf0g3xq" path="res://art/playbutton.png" id="5_noxln"]
+[ext_resource type="Texture2D" uid="uid://dcqypv0hka6ct" path="res://art/quitbutton.png" id="6_5666j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bokr2"]
 texture = ExtResource("1_vc56u")
@@ -8056,6 +8059,12 @@ sources/0 = SubResource("TileSetAtlasSource_bokr2")
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_py32l")
 
+[node name="Backgroundcity" type="Sprite2D" parent="."]
+position = Vector2(1934.67, 400)
+scale = Vector2(0.333563, 0.37037)
+texture = ExtResource("2_f1r0n")
+script = ExtResource("3_ypru7")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_vrfsp")
 autoplay = true
@@ -8070,9 +8079,18 @@ tile_set = SubResource("TileSet_tnj6r")
 offset_left = 512.0
 offset_top = 448.0
 offset_right = 1056.0
-offset_bottom = 856.0
+offset_bottom = 669.0
 scale = Vector2(0.471, 0.471)
-icon = ExtResource("3_4qrg8")
+icon = ExtResource("5_noxln")
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 512.0
+offset_top = 576.0
+offset_right = 1056.0
+offset_bottom = 780.0
+scale = Vector2(0.471, 0.471)
+icon = ExtResource("6_5666j")
 icon_alignment = 1
 
 [node name="BanefulDualityTitle" type="Sprite2D" parent="."]
@@ -8081,3 +8099,4 @@ scale = Vector2(1.92, 1.056)
 texture = ExtResource("5_5odl8")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
