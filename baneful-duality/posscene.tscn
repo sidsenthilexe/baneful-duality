@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://0m0dmknvkp71"]
+
+[ext_resource type="Script" path="res://posscene.gd" id="1_w777u"]
+[ext_resource type="Texture2D" uid="uid://bfjpjt5o1p7ck" path="res://art/black.png" id="2_ex62n"]
+[ext_resource type="Texture2D" uid="uid://b3recvfhsunss" path="res://art/part1.png" id="2_sjcp3"]
+[ext_resource type="Texture2D" uid="uid://b7nnd8m4qmqq6" path="res://art/part2.png" id="3_gnv6n"]
+[ext_resource type="Texture2D" uid="uid://b81uswql6wgup" path="res://art/part3.png" id="4_f4wod"]
+[ext_resource type="Texture2D" uid="uid://cyt78b1fdmglr" path="res://art/part4.png" id="5_fvjkc"]
+[ext_resource type="Texture2D" uid="uid://r24qwq7aihxy" path="res://art/part5.png" id="6_s0o16"]
+[ext_resource type="Texture2D" uid="uid://b632fl2si6b67" path="res://art/part6.png" id="7_cs5mt"]
+[ext_resource type="Texture2D" uid="uid://cthjhikidmku7" path="res://art/part7.png" id="8_mf6vt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xliw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sjcp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gnv6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f4wod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fvjkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s0o16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cs5mt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mf6vt")
+}],
+"loop": true,
+"name": &"becomingpossession",
+"speed": 5.0
+}]
+
+[node name="posscene" type="Node2D"]
+script = ExtResource("1_w777u")
+
+[node name="Black" type="Sprite2D" parent="."]
+position = Vector2(648, 405)
+scale = Vector2(84.125, 55.25)
+texture = ExtResource("2_ex62n")
+
+[node name="possessionbecome" type="AnimatedSprite2D" parent="."]
+position = Vector2(646, 250)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_8xliw")
+animation = &"becomingpossession"
+
+[node name="animtimer" type="Timer" parent="."]
+wait_time = 1.4
+autostart = true
+
+[connection signal="timeout" from="animtimer" to="." method="_on_timer_timeout"]

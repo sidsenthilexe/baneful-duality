@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var Bullet : PackedScene = preload("res://bullet/bullet.tscn")
 @onready var m2d: Marker2D = $Marker2D
 
+var possession_counter = 0
 var slide_check=0
 var player_health = 0
 var possession_start=false
@@ -27,6 +28,12 @@ func _process(_delta: float) -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	if (position.x <= 500 and position.y < 400 and Global.possession_counter == 1):
+		position.x = 15700
+		position.y = 100
+	elif (position.x <= 500 and position.y < 400 and Global.possession_counter == 2):
+		position.x = 25600
+		position.y = 260
 	Global.player_positionx = position.x
 	if player_health == 5:
 		$Camera2D/Control/health_bar.texture = ResourceLoader.load("res://art/health_full.png")
@@ -112,11 +119,14 @@ func _physics_process(delta: float) -> void:
 			
 #cave 1 possession
 	if position.x>=15460 and position.x<=15600:
+		get_tree().change_scene_to_file("res://posscene.tscn")
 		position.x=15700
 		position.y=100
 		Global.possession_bool=true
+	
+	if position.x > 15600 and position.x < 15700:
+		position.x = 15700
 		
-		play_pos_anim()
 	if position.x>=21160 and position.x<=21170:
 		position.x=21300
 		position.y=238
@@ -125,12 +135,15 @@ func _physics_process(delta: float) -> void:
 	#print(position.y)
 
 #cave 2 possession
-	if position.x>=25340 and position.x<=25600:
+	if position.x>=25340 and position.x<=25500:
+		get_tree().change_scene_to_file("res://posscene.tscn")
 		position.x=25600
 		position.y=260
 		Global.possession_bool=true
+	
+	if position.x > 25500 and position.x < 25600:
+		position.x = 25600
 		
-		play_pos_anim()
 	if position.x>=34200 and position.x<=34200:
 		position.x=34500
 		position.y=-11
