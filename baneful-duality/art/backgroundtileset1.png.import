@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8osj0vivom80"
-path="res://.godot/imported/foresttop.png-e10cd3a554fea462fb75f62c756c2f6c.ctex"
+uid="uid://c5fgoous3nuwm"
+path="res://.godot/imported/backgroundtileset1.png-3514b8a5232f2f0c39dc5ce21bbac3f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/foresttop.png"
-dest_files=["res://.godot/imported/foresttop.png-e10cd3a554fea462fb75f62c756c2f6c.ctex"]
+source_file="res://art/backgroundtileset1.png"
+dest_files=["res://.godot/imported/backgroundtileset1.png-3514b8a5232f2f0c39dc5ce21bbac3f9.ctex"]
 
 [params]
 

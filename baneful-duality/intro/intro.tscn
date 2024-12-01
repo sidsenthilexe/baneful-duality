@@ -1,17 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://co66n4jwsretn"]
+[gd_scene load_steps=6 format=3 uid="uid://co66n4jwsretn"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_8yopy"]
+[ext_resource type="Texture2D" uid="uid://ds7bcq0be6ye6" path="res://art/intropanorama.png" id="2_nnnap"]
 [ext_resource type="AudioStream" uid="uid://y2k50du0j16v" path="res://music/intro_message.mp3" id="2_xn6hw"]
+[ext_resource type="Script" path="res://intro/sprite_2d.gd" id="3_hdymc"]
 [ext_resource type="Texture2D" uid="uid://ccyrohynjuckv" path="res://music/skipbutton.png" id="4_7fr73"]
-[ext_resource type="Texture2D" uid="uid://cwgaf5cjgvq2b" path="res://art/backgroundforest.png" id="4_ly4cl"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_8yopy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(640, 400)
-scale = Vector2(0.333333, 0.37037)
-texture = ExtResource("4_ly4cl")
+position = Vector2(1933.67, 400)
+scale = Vector2(0.333391, 0.37037)
+texture = ExtResource("2_nnnap")
+script = ExtResource("3_hdymc")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_xn6hw")
