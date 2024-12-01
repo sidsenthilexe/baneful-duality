@@ -33,6 +33,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("8_mf6vt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mf6vt")
 }],
 "loop": true,
 "name": &"becomingpossession",
@@ -54,7 +57,7 @@ sprite_frames = SubResource("SpriteFrames_8xliw")
 animation = &"becomingpossession"
 
 [node name="animtimer" type="Timer" parent="."]
-wait_time = 1.4
+wait_time = 1.6
 autostart = true
 
 [connection signal="timeout" from="animtimer" to="." method="_on_timer_timeout"]
