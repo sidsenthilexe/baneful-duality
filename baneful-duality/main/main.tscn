@@ -203,7 +203,62 @@ position = Vector2(255, 156)
 [node name="mob" parent="." instance=ExtResource("31_pbinf")]
 position = Vector2(2951, 268)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="song1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("33_g7ewh")
+volume_db = -30.0
 autoplay = true
 parameters/looping = true
+
+[node name="mob2" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(3821, 614)
+
+[node name="mob3" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(6520, 112)
+
+[node name="mob4" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(7250, 288)
+
+[node name="mob5" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(8546, 63)
+
+[node name="mob6" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(8269, 40)
+
+[node name="mob7" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(8418, 39)
+
+[node name="mob8" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(8741, 89)
+
+[node name="mob9" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(8866, 89)
+
+[node name="mob10" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(8924, 113)
+
+[node name="mob11" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(9050, 114)
+
+[node name="mob12" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(9097, 138)
+
+[node name="mob13" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(9271, 188)
+
+[node name="mob14" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(9401, 188)
+
+[node name="mob15" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(9501, 214)
+
+[node name="mob16" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(9641, 238)
+
+[node name="mob17" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(9806, 238)
+
+[node name="mob18" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(9959, 264)
+
+[node name="mob19" parent="." instance=ExtResource("31_pbinf")]
+position = Vector2(10113, 264)

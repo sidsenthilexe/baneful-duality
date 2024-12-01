@@ -4,10 +4,10 @@ extends CharacterBody2D
 @onready var main_reference = load("res://main/main.tscn")
 @onready var Bullet : PackedScene = preload("res://bullet/bullet.tscn")
 @onready var m2d: Marker2D = $Marker2D
-
+@onready var footstepsound = $"../footsteps"
 var possession_counter = 0
 var slide_check=0
-var player_health = 0
+var player_health = 80
 var possession_start=false
 var move_array = []
 var last_moves_array = []
