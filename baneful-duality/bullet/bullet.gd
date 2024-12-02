@@ -17,6 +17,7 @@ func _physics_process(delta):
 		bullet_direction = Global.player_direction
 	visible = true
 	position += transform.x*speed*delta*bullet_direction
+	
 
 
 func _on_body_entered(body):
