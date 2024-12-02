@@ -15,7 +15,7 @@ var speed = 150
 const JUMP_VELOCITY = -400.0
 var double_jump_count = 0
 var possession_generator = RandomNumberGenerator.new()
-var possession_chances = 0;
+
 
 func play_pos_anim():
 	player_animations.play("posession")
@@ -189,3 +189,4 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_body_entered(body):
 	if body.name.begins_with("mob"):
 			player_health -= 1
+			mob_x_speed=350

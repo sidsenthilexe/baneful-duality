@@ -19,7 +19,8 @@ script/source = "extends CharacterBody2D
 @onready var mob_animations: AnimatedSprite2D = $AnimatedSprite2D
 
 
-const SPEED = 75
+@export var speed_x = 75
+@export var speed_y = 200
 
 var mob_health = 5
 
@@ -36,8 +37,8 @@ func _physics_process(delta):
 		direction = -1
 		mob_animations.play(\"walk_left\")
 	
-	velocity.y = 1
-	position.x = position.x + direction * SPEED * delta
+	velocity.y = position.y + speed_y * delta
+	position.x = position.x + direction * speed_x * delta
 	
 
 	move_and_slide()
