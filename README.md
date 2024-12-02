@@ -11,3 +11,6 @@ However, while you want to travel peacefully, as you know that the zombies that 
 your alter ego forces you to do whatever it takes to achieve your goal as fast as possible.
 
 You are in control but you can't make the choices you would like to.
+
+
+Footstep sound credit: https://thowsenmedia.itch.io/video-game-footstep-sound-pack
