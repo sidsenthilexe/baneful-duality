@@ -1,5 +1,8 @@
 extends Node2D
 @onready var player = $CharacterBody2D
+@onready var song1 = $song1
+@onready var song2 = $song2
+@onready var song3 = $song3
 const Bullet = preload("res://bullet/bullet.tscn")
 var bullet_instance
 # Called when the node enters the scene tree for the first time.

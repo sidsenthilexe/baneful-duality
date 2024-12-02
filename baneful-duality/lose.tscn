@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bixdmkio1sb04"]
+
+[ext_resource type="Texture2D" uid="uid://cwds2eixtw2nd" path="res://art/backgroundtileset1.png" id="1_e5obx"]
+[ext_resource type="AudioStream" uid="uid://nl1t8b6laanr" path="res://Bad_ending.mp3" id="2_nqhyq"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4284, 2167)
+scale = Vector2(1.628, 1.081)
+texture = ExtResource("1_e5obx")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 52.0
+offset_top = 198.0
+offset_right = 294.0
+offset_bottom = 323.0
+scale = Vector2(4.98, 4.98)
+text = "You killed too many zombies"
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nqhyq")
+autoplay = true

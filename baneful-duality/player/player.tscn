@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://nqay38cb1sw1"]
+[gd_scene load_steps=66 format=3 uid="uid://nqay38cb1sw1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_x6kmk"]
 [ext_resource type="Texture2D" uid="uid://be2xjeeoywcug" path="res://art/Idle1.png" id="2_nkiai"]
@@ -60,6 +60,8 @@
 [ext_resource type="Texture2D" uid="uid://b8y1434cs8sxf" path="res://main/shadowwalk6.png" id="27_vjoht"]
 [ext_resource type="Texture2D" uid="uid://bmk1fwevbucgn" path="res://main/shadowwalk7.png" id="28_jk35q"]
 [ext_resource type="AudioStream" uid="uid://brn6tmn5eq7s0" path="res://music/path_01_a.mp3" id="60_bwhc5"]
+[ext_resource type="AudioStream" uid="uid://dvkcm502lma4q" path="res://music/level_2.mp3" id="62_xa87r"]
+[ext_resource type="AudioStream" uid="uid://1p4r6ltbv7np" path="res://music/level_3.mp3" id="63_mvwy2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jom1u"]
 animations = [{
@@ -343,5 +345,21 @@ position = Vector2(240, 320)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("60_bwhc5")
 volume_db = 7.5
+
+[node name="song1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("63_mvwy2")
+volume_db = -7.5
+autoplay = true
+parameters/looping = false
+
+[node name="song2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("62_xa87r")
+volume_db = -7.5
+parameters/looping = false
+
+[node name="song3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("63_mvwy2")
+volume_db = -7.5
+parameters/looping = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

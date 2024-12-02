@@ -5,14 +5,17 @@ extends CharacterBody2D
 @onready var Bullet : PackedScene = preload("res://bullet/bullet.tscn")
 @onready var m2d: Marker2D = $Marker2D
 @onready var walk = $AudioStreamPlayer2D
+@onready var song1 = $song1
+@onready var song2 = $song2
+@onready var song3 = $song3
 var possession_counter = 0
 var slide_check=0
-var player_health = 80
+var player_health =5 
 var possession_start=false
 var move_array = []
 var last_moves_array = []
 var speed = 150
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -325.0
 var double_jump_count = 0
 var possession_generator = RandomNumberGenerator.new()
 
@@ -28,6 +31,8 @@ func _process(_delta: float) -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	
+	
 	if velocity.x != 0 and is_on_floor():
 		if !walk.playing:
 			walk.play()
@@ -38,9 +43,11 @@ func _physics_process(delta: float) -> void:
 	if (position.x <= 500 and position.y < 400 and Global.possession_counter == 1):
 		position.x = 15700
 		position.y = 100
+	
 	elif (position.x <= 500 and position.y < 400 and Global.possession_counter == 2):
 		position.x = 25600
 		position.y = 260
+	
 	Global.player_positionx = position.x
 	if player_health == 5:
 		$Camera2D/Control/health_bar.texture = ResourceLoader.load("res://art/health_full.png")
@@ -55,13 +62,14 @@ func _physics_process(delta: float) -> void:
 	if player_health == 0:
 		$Camera2D/Control/health_bar.texture = ResourceLoader.load("res://art/health_0.png")
 	
+
+	
 	if move_array.size() > 3:
 		move_array.erase(0)
 	for i in move_array:
 		if not last_moves_array.has(i):
 			last_moves_array.append(i)
 	last_moves_array.reverse()
-	possession_chances = possession_generator.randi_range(1, 10000)
 	if is_on_floor():
 		double_jump_count = 0
 	
@@ -85,10 +93,19 @@ func _physics_process(delta: float) -> void:
 		#get_parent().add_child(bullet_instance)
 		#bullet_instance.transform = $Marker2D.transform
 
+
+	if Input.is_action_just_pressed("attack") and Global.player_positionx >= 36137 and Global.player_positionx <= 36414:
+		if Global.score <= 3:
+			get_tree().change_scene_to_file("res://win.tscn")
+			
+	if Input.is_action_just_pressed("attack") and Global.player_positionx >= 36137 and Global.player_positionx <= 36414:
+		if Global.score > 3:
+			get_tree().change_scene_to_file("res://lose.tscn")
+	
 	if Global.possession_bool==true:
-		speed=175
+		speed=150
 	if Global.possession_bool==false:
-		speed=250
+		speed=275
 
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:	
@@ -126,10 +143,13 @@ func _physics_process(delta: float) -> void:
 			
 #cave 1 possession
 	if position.x>=15460 and position.x<=15600:
+		Global.health = player_health
 		get_tree().change_scene_to_file("res://posscene.tscn")
 		position.x=15700
 		position.y=100
 		Global.possession_bool=true
+		song1.stop()
+		song2.play()
 	
 	if position.x > 15600 and position.x < 15700:
 		position.x = 15700
@@ -143,11 +163,13 @@ func _physics_process(delta: float) -> void:
 
 #cave 2 possession
 	if position.x>=25340 and position.x<=25500:
+		Global.health=player_health
 		get_tree().change_scene_to_file("res://posscene.tscn")
 		position.x=25600
 		position.y=260
 		Global.possession_bool=true
-	
+		song2.stop()
+		song3.play()
 	if position.x > 25500 and position.x < 25600:
 		position.x = 25600
 		
@@ -178,9 +200,7 @@ func _physics_process(delta: float) -> void:
 			player_animations.play("posessionidle")
 	
 	if player_health <= 0:
-		player_health = 5
-		position.x = 255
-		position.y = 189
+		get_tree().change_scene_to_file("res://title/title.tscn")
 
 		
 
@@ -189,4 +209,4 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_body_entered(body):
 	if body.name.begins_with("mob"):
 			player_health -= 1
-			mob_x_speed=350
+			speed=0
