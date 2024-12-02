@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var main_reference = load("res://main/main.tscn")
 @onready var Bullet : PackedScene = preload("res://bullet/bullet.tscn")
 @onready var m2d: Marker2D = $Marker2D
-@onready var footstepsound = $"../footsteps"
+@onready var walk = $AudioStreamPlayer2D
 var possession_counter = 0
 var slide_check=0
 var player_health = 80
@@ -28,6 +28,13 @@ func _process(_delta: float) -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	if velocity.x != 0 and is_on_floor():
+		if !walk.playing:
+			walk.play()
+	elif walk.playing:
+		walk.stop()
+	
+	
 	if (position.x <= 500 and position.y < 400 and Global.possession_counter == 1):
 		position.x = 15700
 		position.y = 100
@@ -79,9 +86,9 @@ func _physics_process(delta: float) -> void:
 		#bullet_instance.transform = $Marker2D.transform
 
 	if Global.possession_bool==true:
-		speed=500.00
+		speed=175
 	if Global.possession_bool==false:
-		speed=500.00
+		speed=250
 
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:	
