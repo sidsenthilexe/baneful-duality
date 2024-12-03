@@ -5,9 +5,6 @@ extends CharacterBody2D
 @onready var Bullet : PackedScene = preload("res://bullet/bullet.tscn")
 @onready var m2d: Marker2D = $Marker2D
 @onready var walk = $AudioStreamPlayer2D
-@onready var song1 = $song1
-@onready var song2 = $song2
-@onready var song3 = $song3
 var possession_counter = 0
 var slide_check=0
 var player_health =5 
@@ -15,7 +12,7 @@ var possession_start=false
 var move_array = []
 var last_moves_array = []
 var speed = 150
-const JUMP_VELOCITY = -325.0
+var JUMP_VELOCITY = -325.0
 var double_jump_count = 0
 var possession_generator = RandomNumberGenerator.new()
 
@@ -80,12 +77,12 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_pressed("move_up") and is_on_floor() and Global.possession_bool==false:
 		player_animations.play("jumping")
-	if Input.is_action_just_pressed("move_up") and is_on_floor():
+	if Input.is_action_just_pressed("move_up") and double_jump_count == 0:
 		velocity.y = JUMP_VELOCITY*0.95
 		move_array.append("2")
 	if Input.is_action_just_pressed("move_up") and not is_on_floor() and double_jump_count == 0:
 		double_jump_count += 1
-		velocity.y = JUMP_VELOCITY*0.95
+		
 	#if Input.is_action_just_pressed("attack") and possession_boolean==true:
 		#print("shot fired")
 		#var bullet_instance = Bullet.instantiate()
@@ -148,8 +145,6 @@ func _physics_process(delta: float) -> void:
 		position.x=15700
 		position.y=100
 		Global.possession_bool=true
-		song1.stop()
-		song2.play()
 	
 	if position.x > 15600 and position.x < 15700:
 		position.x = 15700
@@ -168,8 +163,6 @@ func _physics_process(delta: float) -> void:
 		position.x=25600
 		position.y=260
 		Global.possession_bool=true
-		song2.stop()
-		song3.play()
 	if position.x > 25500 and position.x < 25600:
 		position.x = 25600
 		

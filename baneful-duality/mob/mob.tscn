@@ -1,6 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dhkiu21mmpw60"]
 
 [ext_resource type="Texture2D" uid="uid://co4lbt6iiw2np" path="res://mob/zombie1.png" id="1_mb6vj"]
+[ext_resource type="Script" path="res://mob/mob.gd" id="1_uk6ti"]
 [ext_resource type="Texture2D" uid="uid://bjvdbjr6y1kgj" path="res://mob/zombie2.png" id="2_3j1el"]
 [ext_resource type="Texture2D" uid="uid://dnoyp7rgfxvdg" path="res://mob/zombie3.png" id="3_6msnj"]
 [ext_resource type="Texture2D" uid="uid://c4kbvypi1b5iv" path="res://mob/zombie4.png" id="4_yuqqh"]
@@ -8,41 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://byo15oppcqfq1" path="res://mob/zombie2reversed.png" id="6_6u7es"]
 [ext_resource type="Texture2D" uid="uid://bp40sfof3mnw8" path="res://mob/zombie3reversed.png" id="7_i6u4r"]
 [ext_resource type="Texture2D" uid="uid://cnhf2c2y4l3tb" path="res://mob/zombie4reversed.png" id="8_68xr5"]
-
-[sub_resource type="GDScript" id="GDScript_2onpb"]
-script/source = "extends CharacterBody2D
-
-@onready var check_ground = $checkGround
-@onready var check_left = $checkLeft
-@onready var check_right = $checkRight
-
-@onready var mob_animations: AnimatedSprite2D = $AnimatedSprite2D
-
-
-@export var speed_x = 75
-@export var speed_y = 200
-
-var mob_health = 5
-
-var direction = 1
-
-func _physics_process(delta):
-	if not check_ground.is_colliding():
-		direction = -1
-		mob_animations.play(\"walk_left\")
-	if check_left.is_colliding():
-		direction = 1
-		mob_animations.play(\"walk\")
-	if check_right.is_colliding():
-		direction = -1
-		mob_animations.play(\"walk_left\")
-	
-	velocity.y = position.y + speed_y * delta
-	position.x = position.x + direction * speed_x * delta
-	
-
-	move_and_slide()
-"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f76wd"]
 animations = [{
@@ -87,7 +53,7 @@ height = 760.0
 
 [node name="mob" type="CharacterBody2D"]
 scale = Vector2(0.05, 0.05)
-script = SubResource("GDScript_2onpb")
+script = ExtResource("1_uk6ti")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f76wd")
